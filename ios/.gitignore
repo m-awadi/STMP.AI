@@ -1,0 +1,9 @@
+STMP.xcodeproj/
+.derived/
+Secrets.xcconfig
+Config/Secrets.xcconfig
+*.xcresult
+.build/
+.swiftpm/
+xcuserdata/
+*.xcuserstate

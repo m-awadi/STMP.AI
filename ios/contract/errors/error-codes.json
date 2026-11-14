@@ -1,0 +1,645 @@
+{
+  "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:47@ce38676ecf55b033a050a24b2236ad5633908df6",
+  "_expect": [
+    "private val MAP"
+  ],
+  "codes": [
+    {
+      "code": "bad_request",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:49@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"bad_request\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "bad_count",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:50@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"bad_count\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "bad_package",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:51@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"bad_package\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "bad_time_min",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:52@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"bad_time_min\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "bad_time_max",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:53@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"bad_time_max\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "bad_time_range",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:54@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"bad_time_range\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "bad_timezone",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:55@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"bad_timezone\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "bad_max",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:56@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"bad_max\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "bad_lines",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:57@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"bad_lines\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "sudo_needs_stdin",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:61@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"sudo_needs_stdin\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "unsupported_action",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:62@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"unsupported_action\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "missing_reply_text",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:63@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"missing_reply_text\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "decode_error",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:64@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"decode_error\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "unknown_secret",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:65@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"unknown_secret\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "host_not_allowed",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:66@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"host_not_allowed\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "redirect_refused",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:67@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"redirect_refused\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "unsupported_content_type",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:68@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"unsupported_content_type\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "unsupported_storage",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:73@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"unsupported_storage\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "vault_exists",
+      "status": 409,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:74@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"vault_exists\" to CONFLICT"
+      ]
+    },
+    {
+      "code": "not_found",
+      "status": 404,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:77@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"not_found\" to NOT_FOUND"
+      ]
+    },
+    {
+      "code": "plugin_disabled",
+      "status": 409,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:82@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"plugin_disabled\" to CONFLICT"
+      ]
+    },
+    {
+      "code": "notification_gone",
+      "status": 410,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:83@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"notification_gone\" to GONE"
+      ]
+    },
+    {
+      "code": "not_clearable",
+      "status": 409,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:84@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"not_clearable\" to CONFLICT"
+      ]
+    },
+    {
+      "code": "auth_required",
+      "status": 401,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:87@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"auth_required\" to UNAUTHORIZED"
+      ]
+    },
+    {
+      "code": "auth_expired",
+      "status": 401,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:88@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"auth_expired\" to UNAUTHORIZED"
+      ]
+    },
+    {
+      "code": "secret_locked",
+      "status": 403,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:92@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"secret_locked\" to FORBIDDEN"
+      ]
+    },
+    {
+      "code": "denied",
+      "status": 403,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:99@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"denied\" to FORBIDDEN"
+      ]
+    },
+    {
+      "code": "caller_unverified",
+      "status": 403,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:103@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"caller_unverified\" to FORBIDDEN"
+      ]
+    },
+    {
+      "code": "caller_denied",
+      "status": 403,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:106@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"caller_denied\" to FORBIDDEN"
+      ]
+    },
+    {
+      "code": "prompt_unreachable",
+      "status": 503,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:114@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"prompt_unreachable\" to UNAVAILABLE"
+      ]
+    },
+    {
+      "code": "auth_not_configured",
+      "status": 503,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:117@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"auth_not_configured\" to UNAVAILABLE"
+      ]
+    },
+    {
+      "code": "listener_unavailable",
+      "status": 503,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:118@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"listener_unavailable\" to UNAVAILABLE"
+      ]
+    },
+    {
+      "code": "model_not_ready",
+      "status": 503,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:122@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"model_not_ready\" to UNAVAILABLE"
+      ]
+    },
+    {
+      "code": "ai_unavailable",
+      "status": 500,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:126@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"ai_unavailable\" to INTERNAL"
+      ]
+    },
+    {
+      "code": "audio_unavailable",
+      "status": 500,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:130@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"audio_unavailable\" to INTERNAL"
+      ]
+    },
+    {
+      "code": "text_too_long",
+      "status": 400,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:133@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"text_too_long\" to BAD_REQUEST"
+      ]
+    },
+    {
+      "code": "tts_busy",
+      "status": 503,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:136@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"tts_busy\" to UNAVAILABLE"
+      ]
+    },
+    {
+      "code": "tts_unavailable",
+      "status": 503,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:139@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"tts_unavailable\" to UNAVAILABLE"
+      ]
+    },
+    {
+      "code": "tts_failed",
+      "status": 500,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:142@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"tts_failed\" to INTERNAL"
+      ]
+    },
+    {
+      "code": "tts_in_call",
+      "status": 409,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:149@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"tts_in_call\" to CONFLICT"
+      ]
+    },
+    {
+      "code": "contacts_unavailable",
+      "status": 503,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:154@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"contacts_unavailable\" to UNAVAILABLE"
+      ]
+    },
+    {
+      "code": "contacts_query_failed",
+      "status": 500,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:157@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"contacts_query_failed\" to INTERNAL"
+      ]
+    },
+    {
+      "code": "vault_missing",
+      "status": 503,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:158@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"vault_missing\" to UNAVAILABLE"
+      ]
+    },
+    {
+      "code": "vault_corrupt",
+      "status": 500,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:159@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"vault_corrupt\" to INTERNAL"
+      ]
+    },
+    {
+      "code": "vault_unrecoverable",
+      "status": 500,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:160@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"vault_unrecoverable\" to INTERNAL"
+      ]
+    },
+    {
+      "code": "vault_unwrap_failed",
+      "status": 500,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:161@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"vault_unwrap_failed\" to INTERNAL"
+      ]
+    },
+    {
+      "code": "allowlist_corrupt",
+      "status": 500,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:162@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"allowlist_corrupt\" to INTERNAL"
+      ]
+    },
+    {
+      "code": "upstream_timeout",
+      "status": 503,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:163@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"upstream_timeout\" to UNAVAILABLE"
+      ]
+    },
+    {
+      "code": "upstream_failed",
+      "status": 409,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:164@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"upstream_failed\" to CONFLICT"
+      ]
+    },
+    {
+      "code": "policy_unavailable",
+      "status": 503,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:165@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"policy_unavailable\" to UNAVAILABLE"
+      ]
+    },
+    {
+      "code": "calendar_zone_unavailable",
+      "status": 503,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:166@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"calendar_zone_unavailable\" to UNAVAILABLE"
+      ]
+    },
+    {
+      "code": "google_error",
+      "status": 409,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:167@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"google_error\" to CONFLICT"
+      ]
+    },
+    {
+      "code": "ssh_bad_key",
+      "status": 409,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:171@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"ssh_bad_key\" to CONFLICT"
+      ]
+    },
+    {
+      "code": "ssh_keygen_failed",
+      "status": 500,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:174@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"ssh_keygen_failed\" to INTERNAL"
+      ]
+    },
+    {
+      "code": "ssh_host_key_unknown",
+      "status": 409,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:177@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"ssh_host_key_unknown\" to CONFLICT"
+      ]
+    },
+    {
+      "code": "ssh_host_key_changed",
+      "status": 409,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:181@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"ssh_host_key_changed\" to CONFLICT"
+      ]
+    },
+    {
+      "code": "ssh_host_key_refused",
+      "status": 409,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:185@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"ssh_host_key_refused\" to CONFLICT"
+      ]
+    },
+    {
+      "code": "ssh_timeout",
+      "status": 503,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:187@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"ssh_timeout\" to UNAVAILABLE"
+      ]
+    },
+    {
+      "code": "ssh_job_not_found",
+      "status": 404,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:190@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"ssh_job_not_found\" to NOT_FOUND"
+      ]
+    },
+    {
+      "code": "ssh_job_limit",
+      "status": 503,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:193@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"ssh_job_limit\" to UNAVAILABLE"
+      ]
+    },
+    {
+      "code": "ssh_failed",
+      "status": 409,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:196@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"ssh_failed\" to CONFLICT"
+      ]
+    },
+    {
+      "code": "auth_error",
+      "status": 500,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:197@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"auth_error\" to INTERNAL"
+      ]
+    },
+    {
+      "code": "secure_storage_error",
+      "status": 500,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:198@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"secure_storage_error\" to INTERNAL"
+      ]
+    },
+    {
+      "code": "email_lookup_failed",
+      "status": 500,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:199@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"email_lookup_failed\" to INTERNAL"
+      ]
+    },
+    {
+      "code": "no_scopes",
+      "status": 500,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:200@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"no_scopes\" to INTERNAL"
+      ]
+    },
+    {
+      "code": "internal_error",
+      "status": 500,
+      "listed": true,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/core/ErrorCodes.kt:201@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "\"internal_error\" to INTERNAL"
+      ]
+    },
+    {
+      "code": "approval_timeout",
+      "status": 408,
+      "listed": false,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/BridgeService.kt:1613@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "approval_timeout"
+      ]
+    },
+    {
+      "code": "caller_registry_unavailable",
+      "status": 500,
+      "listed": false,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/BridgeService.kt:1083@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "caller_registry_unavailable"
+      ]
+    },
+    {
+      "code": "audit_unavailable",
+      "status": 500,
+      "listed": false,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/BridgeService.kt:1036@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "audit_unavailable"
+      ]
+    },
+    {
+      "code": "logcat_failed",
+      "status": 500,
+      "listed": false,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/logs/LogcatPlugin.kt:87@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "logcat_failed"
+      ]
+    },
+    {
+      "code": "not_supported_on_ios",
+      "status": 501,
+      "listed": true,
+      "platform": "ios",
+      "_source": "ios:Q5"
+    }
+  ]
+}

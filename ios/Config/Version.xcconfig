@@ -1,0 +1,3 @@
+// Merger-owned after T0 creates it. MARKETING_VERSION and CURRENT_PROJECT_VERSION feed Info.plist.
+MARKETING_VERSION = 0.1.0
+CURRENT_PROJECT_VERSION = 1

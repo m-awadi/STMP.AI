@@ -1,0 +1,960 @@
+{
+  "_source": "android:app/src/main/java/com/mido/phonebridge/core/Plugin.kt:25@ce38676ecf55b033a050a24b2236ad5633908df6",
+  "_expect": [
+    "data class Route("
+  ],
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/probe",
+      "plugin": "probe",
+      "describe": "Check that the approval gate reaches you",
+      "verb": "READ",
+      "auditRequestBody": true,
+      "auditResponseBody": false,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": false,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/probe/ProbePlugin.kt:48@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.READ"
+      ],
+      "checks": [
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/probe/ProbePlugin.kt:51@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "aiSummary = false"
+          ]
+        },
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/probe/ProbePlugin.kt:56@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "auditResponseBody = false"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/help",
+      "plugin": "help",
+      "describe": "Describe this bridge and everything it can do",
+      "verb": "READ",
+      "auditRequestBody": true,
+      "auditResponseBody": false,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": false,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/help/HelpPlugin.kt:64@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.READ"
+      ],
+      "checks": [
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/help/HelpPlugin.kt:67@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "aiSummary = false"
+          ]
+        },
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/help/HelpPlugin.kt:71@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "auditResponseBody = false"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/audio/{cue}",
+      "plugin": "audio",
+      "describe": "PLAY AN ATTENTION CUE",
+      "verb": "EXECUTE",
+      "auditRequestBody": false,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": false,
+      "gateExempt": true,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": true,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/audio/AudioPlugin.kt:46@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.EXECUTE"
+      ],
+      "checks": [
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/audio/AudioPlugin.kt:48@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "gateExempt = true"
+          ]
+        },
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/audio/AudioPlugin.kt:51@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "aiSummary = false"
+          ]
+        },
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/audio/AudioPlugin.kt:53@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "auditRequestBody = false"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/tts",
+      "plugin": "tts",
+      "describe": "SAY TEXT ALOUD",
+      "verb": "EXECUTE",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": false,
+      "gateExempt": true,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": true,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/tts/TtsPlugin.kt:103@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.EXECUTE"
+      ],
+      "checks": [
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/tts/TtsPlugin.kt:104@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "gateExempt = true"
+          ]
+        },
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/tts/TtsPlugin.kt:106@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "aiSummary = false"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/gmail/profile",
+      "plugin": "gmail",
+      "describe": "Show your Gmail profile",
+      "verb": "READ",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/gmail/GmailPlugin.kt:31@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.READ"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/gmail/messages",
+      "plugin": "gmail",
+      "describe": "List your Gmail messages",
+      "verb": "READ",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": true,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/gmail/GmailPlugin.kt:33@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.READ"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/gmail/messages/{id}",
+      "plugin": "gmail",
+      "describe": "Read a Gmail message",
+      "verb": "READ",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/gmail/GmailPlugin.kt:39@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.READ"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/gmail/messages/{id}/modify",
+      "plugin": "gmail",
+      "describe": "Modify Gmail labels",
+      "verb": "EDIT",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/gmail/GmailPlugin.kt:40@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.EDIT"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/gmail/messages/{id}/trash",
+      "plugin": "gmail",
+      "describe": "TRASH EMAIL",
+      "verb": "DELETE",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/gmail/GmailPlugin.kt:41@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.DELETE"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/gmail/messages/send",
+      "plugin": "gmail",
+      "describe": "SEND EMAIL",
+      "verb": "WRITE",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/gmail/GmailPlugin.kt:42@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.WRITE"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/calendar/events",
+      "plugin": "calendar",
+      "describe": "List your calendar events",
+      "verb": "READ",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": true,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/calendar/CalendarPlugin.kt:28@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.READ"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/calendar/events",
+      "plugin": "calendar",
+      "describe": "CREATE CALENDAR EVENT",
+      "verb": "WRITE",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/calendar/CalendarPlugin.kt:33@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.WRITE"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/calendar/events/{id}",
+      "plugin": "calendar",
+      "describe": "UPDATE CALENDAR EVENT",
+      "verb": "EDIT",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/calendar/CalendarPlugin.kt:34@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.EDIT"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/calendar/events/{id}",
+      "plugin": "calendar",
+      "describe": "DELETE CALENDAR EVENT",
+      "verb": "DELETE",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/calendar/CalendarPlugin.kt:35@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.DELETE"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/calendar/events/{id}/move",
+      "plugin": "calendar",
+      "describe": "MOVE CALENDAR EVENT",
+      "verb": "EDIT",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/calendar/CalendarPlugin.kt:36@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.EDIT"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/calendar/quickadd",
+      "plugin": "calendar",
+      "describe": "QUICK-ADD CALENDAR EVENT",
+      "verb": "WRITE",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": true,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/calendar/CalendarPlugin.kt:37@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.WRITE"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/drive/files",
+      "plugin": "drive",
+      "describe": "List or search your Drive files",
+      "verb": "READ",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/drive/DrivePlugin.kt:81@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.READ"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/drive/files/{id}",
+      "plugin": "drive",
+      "describe": "Show a Drive file's details",
+      "verb": "READ",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/drive/DrivePlugin.kt:83@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.READ"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/drive/files/{id}/content",
+      "plugin": "drive",
+      "describe": "DOWNLOAD a Drive file",
+      "verb": "READ",
+      "auditRequestBody": true,
+      "auditResponseBody": false,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/drive/DrivePlugin.kt:84@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.READ"
+      ],
+      "checks": [
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/drive/DriveRouteFlags.kt:57@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "auditResponseBody = false"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/drive/files",
+      "plugin": "drive",
+      "describe": "CREATE DRIVE FOLDER",
+      "verb": "WRITE",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/drive/DrivePlugin.kt:85@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.WRITE"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/drive/files/{id}/rename",
+      "plugin": "drive",
+      "describe": "RENAME DRIVE FILE",
+      "verb": "EDIT",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/drive/DrivePlugin.kt:86@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.EDIT"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/drive/files/{id}/move",
+      "plugin": "drive",
+      "describe": "MOVE DRIVE FILE",
+      "verb": "EDIT",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/drive/DrivePlugin.kt:87@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.EDIT"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/drive/files/{id}/trash",
+      "plugin": "drive",
+      "describe": "TRASH DRIVE FILE",
+      "verb": "DELETE",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/drive/DrivePlugin.kt:88@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.DELETE"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/drive/files/upload",
+      "plugin": "drive",
+      "describe": "UPLOAD FILE TO DRIVE",
+      "verb": "WRITE",
+      "auditRequestBody": false,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": true,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/drive/DrivePlugin.kt:89@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.WRITE"
+      ],
+      "checks": [
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/drive/DriveRouteFlags.kt:62@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "auditRequestBody = false"
+          ]
+        },
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/drive/DriveRouteFlags.kt:62@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "streamsRequest = true"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/contacts",
+      "plugin": "contacts",
+      "describe": "Search your contacts",
+      "verb": "READ",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": true,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": true,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/contacts/ContactsPlugin.kt:73@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.READ"
+      ],
+      "checks": [
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/contacts/ContactsPlugin.kt:83@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "auditResponseTransform ="
+          ]
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/debug",
+      "plugin": "debug",
+      "describe": "Read the phone's diagnostic report",
+      "verb": "READ",
+      "auditRequestBody": true,
+      "auditResponseBody": false,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": false,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/debug/DebugPlugin.kt:81@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.READ"
+      ],
+      "checks": [
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/debug/DebugPlugin.kt:91@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "aiSummary = false"
+          ]
+        },
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/debug/DebugPlugin.kt:85@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "auditResponseBody = false"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/audit",
+      "plugin": "debug",
+      "describe": "DELETE THE REQUEST LOG",
+      "verb": "DELETE",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": false,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/debug/DebugPlugin.kt:94@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.DELETE"
+      ],
+      "checks": [
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/debug/DebugPlugin.kt:98@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "aiSummary = false"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/logs",
+      "plugin": "logs",
+      "describe": "Read this app's own logcat",
+      "verb": "READ",
+      "auditRequestBody": false,
+      "auditResponseBody": false,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": false,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": true,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/logs/LogcatPlugin.kt:49@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.READ"
+      ],
+      "checks": [
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/logs/LogcatPlugin.kt:57@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "aiSummary = false"
+          ]
+        },
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/logs/LogcatPlugin.kt:52@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "auditResponseBody = false"
+          ]
+        },
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/logs/LogcatPlugin.kt:53@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "auditRequestBody = false"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/notifications",
+      "plugin": "notifications",
+      "describe": "List your notifications",
+      "verb": "READ",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": true,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/notifications/NotificationsPlugin.kt:46@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.READ"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/notifications/{id}/action",
+      "plugin": "notifications",
+      "describe": "Fire a notification action",
+      "verb": "EXECUTE",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/notifications/NotificationsPlugin.kt:52@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.EXECUTE"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/notifications/{id}/dismiss",
+      "plugin": "notifications",
+      "describe": "Dismiss a notification",
+      "verb": "EXECUTE",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": true,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/notifications/NotificationsPlugin.kt:53@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.EXECUTE"
+      ],
+      "checks": [
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/notifications/NotificationsPlugin.kt:53@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "holdExempt = true"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/secrets",
+      "plugin": "secrets",
+      "describe": "List every secret's non-secret metadata (no values)",
+      "verb": "READ",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/secrets/SecretIndexPlugin.kt:42@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.READ"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/secrets/{name}",
+      "plugin": "secrets",
+      "describe": "Read one secret's non-secret metadata (no value)",
+      "verb": "READ",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/secrets/SecretIndexPlugin.kt:47@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.READ"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/secrets/{name}/call",
+      "plugin": "secrets",
+      "describe": "Call an API with the '<name>' secret",
+      "verb": "verbFor",
+      "fallback": "EXECUTE",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": true,
+      "validate": true,
+      "needsPassword": null,
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/secrets/SecretPlugin.kt:36@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.EXECUTE",
+        "verbFor"
+      ],
+      "checks": [
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/secrets/SecretPlugin.kt:63@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "needsVault = true"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ssh/{name}",
+      "plugin": "ssh",
+      "describe": "RUN COMMAND OVER SSH",
+      "verb": "EXECUTE",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": true,
+      "validate": true,
+      "needsPassword": "sudo",
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/ssh/SshPlugin.kt:63@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.EXECUTE"
+      ],
+      "checks": [
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/ssh/SshPlugin.kt:84@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "needsVault = true"
+          ]
+        },
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/ssh/SshPlugin.kt:79@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "needsPassword",
+            "SudoCommand.invokes"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ssh/{name}/detach",
+      "plugin": "ssh",
+      "describe": "START A DETACHED COMMAND OVER SSH",
+      "verb": "EXECUTE",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": true,
+      "validate": true,
+      "needsPassword": "never",
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/ssh/SshPlugin.kt:87@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.EXECUTE"
+      ],
+      "checks": [
+        {
+          "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/ssh/SshPlugin.kt:109@ce38676ecf55b033a050a24b2236ad5633908df6",
+          "_expect": [
+            "needsVault = true"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ssh/job/{id}",
+      "plugin": "ssh",
+      "describe": "READ A DETACHED SSH JOB",
+      "verb": "READ",
+      "auditRequestBody": true,
+      "auditResponseBody": true,
+      "auditResponseTransform": false,
+      "streamsRequest": false,
+      "aiSummary": true,
+      "gateExempt": false,
+      "holdExempt": false,
+      "needsVault": false,
+      "validate": false,
+      "needsPassword": "never",
+      "_source": "android:app/src/main/java/com/mido/phonebridge/plugins/ssh/SshPlugin.kt:114@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "Verb.READ"
+      ]
+    }
+  ]
+}

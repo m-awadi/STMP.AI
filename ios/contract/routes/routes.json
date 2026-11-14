@@ -1,0 +1,160 @@
+{
+  "_source": "android:app/src/test/java/com/mido/phonebridge/HelpContractTest.kt:131@ce38676ecf55b033a050a24b2236ad5633908df6",
+  "_expect": [
+    "PINNED_ROUTES"
+  ],
+  "routes": [
+    {
+      "method": "DELETE",
+      "path": "/audit"
+    },
+    {
+      "method": "DELETE",
+      "path": "/calendar/events/{id}"
+    },
+    {
+      "method": "GET",
+      "path": "/calendar/events"
+    },
+    {
+      "method": "GET",
+      "path": "/contacts"
+    },
+    {
+      "method": "GET",
+      "path": "/debug"
+    },
+    {
+      "method": "GET",
+      "path": "/drive/files"
+    },
+    {
+      "method": "GET",
+      "path": "/drive/files/{id}"
+    },
+    {
+      "method": "GET",
+      "path": "/drive/files/{id}/content"
+    },
+    {
+      "method": "GET",
+      "path": "/gmail/messages"
+    },
+    {
+      "method": "GET",
+      "path": "/gmail/messages/{id}"
+    },
+    {
+      "method": "GET",
+      "path": "/gmail/profile"
+    },
+    {
+      "method": "GET",
+      "path": "/help"
+    },
+    {
+      "method": "GET",
+      "path": "/logs"
+    },
+    {
+      "method": "GET",
+      "path": "/notifications"
+    },
+    {
+      "method": "GET",
+      "path": "/probe"
+    },
+    {
+      "method": "GET",
+      "path": "/secrets"
+    },
+    {
+      "method": "GET",
+      "path": "/secrets/{name}"
+    },
+    {
+      "method": "GET",
+      "path": "/ssh/job/{id}"
+    },
+    {
+      "method": "POST",
+      "path": "/audio/{cue}"
+    },
+    {
+      "method": "POST",
+      "path": "/calendar/events"
+    },
+    {
+      "method": "POST",
+      "path": "/calendar/events/{id}"
+    },
+    {
+      "method": "POST",
+      "path": "/calendar/events/{id}/move"
+    },
+    {
+      "method": "POST",
+      "path": "/calendar/quickadd"
+    },
+    {
+      "method": "POST",
+      "path": "/drive/files"
+    },
+    {
+      "method": "POST",
+      "path": "/drive/files/upload"
+    },
+    {
+      "method": "POST",
+      "path": "/drive/files/{id}/move"
+    },
+    {
+      "method": "POST",
+      "path": "/drive/files/{id}/rename"
+    },
+    {
+      "method": "POST",
+      "path": "/drive/files/{id}/trash"
+    },
+    {
+      "method": "POST",
+      "path": "/gmail/messages/send"
+    },
+    {
+      "method": "POST",
+      "path": "/gmail/messages/{id}/modify"
+    },
+    {
+      "method": "POST",
+      "path": "/gmail/messages/{id}/trash"
+    },
+    {
+      "method": "POST",
+      "path": "/notifications/{id}/action"
+    },
+    {
+      "method": "POST",
+      "path": "/notifications/{id}/dismiss"
+    },
+    {
+      "method": "POST",
+      "path": "/secrets/{name}/call"
+    },
+    {
+      "method": "POST",
+      "path": "/ssh/{name}"
+    },
+    {
+      "method": "POST",
+      "path": "/ssh/{name}/detach"
+    },
+    {
+      "method": "POST",
+      "path": "/tts"
+    }
+  ],
+  "exempt": [
+    "POST /audio/{cue}",
+    "POST /tts"
+  ]
+}

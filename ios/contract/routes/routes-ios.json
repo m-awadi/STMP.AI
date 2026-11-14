@@ -1,0 +1,20 @@
+{
+  "_source": "ios:Q12",
+  "routes": [
+    {
+      "key": "GET /notifications",
+      "unsupportedOnIOS": "Android notifications cannot be read or acted on from an iPhone app; iOS offers no equivalent API.",
+      "_source": "ios:Q12"
+    },
+    {
+      "key": "POST /notifications/{id}/action",
+      "unsupportedOnIOS": "Android notifications cannot be read or acted on from an iPhone app; iOS offers no equivalent API.",
+      "_source": "ios:Q12"
+    },
+    {
+      "key": "POST /notifications/{id}/dismiss",
+      "unsupportedOnIOS": "Android notifications cannot be read or acted on from an iPhone app; iOS offers no equivalent API.",
+      "_source": "ios:Q12"
+    }
+  ]
+}

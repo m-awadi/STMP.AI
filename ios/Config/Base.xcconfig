@@ -1,0 +1,9 @@
+// Shared build settings for every STMP target. Version.xcconfig is merger-owned.
+#include "Version.xcconfig"
+
+// Google sign-in (Q11). Both are blank or a placeholder without Secrets.xcconfig, so the google plugin reports
+// NOT IN THIS BUILD. Copy Secrets.example.xcconfig to Secrets.xcconfig (uncommitted) and fill them in.
+GOOGLE_IOS_CLIENT_ID =
+GOOGLE_REVERSED_CLIENT_ID = com.mido.stmp.google-unconfigured
+
+#include? "Secrets.xcconfig"
