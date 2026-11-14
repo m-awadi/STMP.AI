@@ -129,7 +129,7 @@ Device-only checks (Secure Enclave key creation, Face ID, Local Network permissi
 
 Run on 2026-11-14 with Xcode 27.2, Swift 6.4.2, simulator iPhone 17 on iOS 26.5.
 
-- **R1, Keychain on the unsigned simulator.** SPIKE_R1_RESULT
+- **R1, Keychain on the unsigned simulator.** `SecItemAdd`, `SecItemCopyMatching` and `SecItemDelete` from a hosted test on the unsigned simulator app all returned **-34018** (`errSecMissingEntitlement`). The reset helper therefore tolerates -34018 (D56), but a real Keychain round trip cannot be tested on the unsigned simulator. Fallback for T6: keep the `KeychainStore` protocol and test the vault against a fake; the real adapter is verified on a device (`tools/DEVICE-CHECKLIST.md`). Owner question: is a locally ad-hoc signed simulator build with a `keychain-access-groups` entitlement acceptable for T6 tests?
 - **NIO and swift-nio-ssh on the iOS Simulator.** `swift-nio` 2.105.0 and `swift-nio-ssh` 0.15.1 (pinned `exact:`) resolve
   with `swift-crypto` 5.1.1, `swift-asn1` 1.7.4, `swift-atomics` 1.3.1, `swift-collections` 1.7.6 and `swift-system` 1.9.0 (the
   computed runtime closure, D124). The package builds for the macOS host and, through the app target, for
