@@ -205,6 +205,12 @@ run_step build-for-testing xb build-for-testing "${XBFLAGS[@]}"
 STAMP=$(date +%Y%m%d-%H%M%S); RES="$OUT/results/$STAMP.xcresult"; mkdir -p "$OUT/results"
 SKIP=(); [ $NO_UI = 1 ] && SKIP=(-skip-testing:STMPUITests)
 export TEST_RUNNER_SNAPSHOT_TESTING_RECORD="$RECMODE"
+if [ $RECORD = 1 ]; then
+  # Recording reports each newly written reference as a failure; a record run is not a DoD result, so only a timeout stops it.
+  run_capped test-without-building xb test-without-building "${XBFLAGS[@]}" -parallel-testing-enabled NO -resultBundlePath "$RES" ${SKIP[@]+"${SKIP[@]}"}
+  [ $? = 124 ] && die record "timeout"
+  say "RECORDED (references written beside the tests; not a DoD result; run plain dod.sh --ticket $TICKET next)"; exit 0
+fi
 run_step test-without-building xb test-without-building "${XBFLAGS[@]}" -parallel-testing-enabled NO -resultBundlePath "$RES" ${SKIP[@]+"${SKIP[@]}"}
 say "step 10 app tests ok ($(grep -Eo 'Executed [0-9]+ tests' "$OUT/logs/test-without-building.log" | tail -1))"
 if [ $RECORD = 1 ]; then say "RECORDED (not a DoD result; run plain dod.sh --ticket $TICKET next)"; exit 0; fi
