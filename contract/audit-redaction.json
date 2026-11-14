@@ -1,0 +1,694 @@
+{
+  "version": 1,
+  "redactedValue": "[redacted]",
+  "note": "Matching is STRICT on purpose: any key that merely contains a sensitive substring is redacted even when it is innocent (monkey, keyboard, author, design). A redacted benign value costs a little log detail; a leaked credential cannot be taken back from an append-only log. Values are never logged in any other form: no length, no prefix, no hash. Drops apply to headers only; query keys are never dropped.",
+  "droppedHeaders": [
+    "host",
+    "content-length",
+    "connection",
+    "accept-encoding"
+  ],
+  "sensitiveKeySubstrings": [
+    "token",
+    "key",
+    "secret",
+    "auth",
+    "session",
+    "signature",
+    "cookie",
+    "password",
+    "authorization",
+    "proxyauthorization",
+    "apikey",
+    "accesstoken",
+    "sig",
+    "jwt",
+    "bearer",
+    "credential",
+    "passwd",
+    "pwd"
+  ],
+  "normalise": "lowercase the key, then remove every '-' and '_'; droppedHeaders are compared to the lower-cased key (separators kept); a key is sensitive when the normalised key contains any sensitiveKeySubstrings entry",
+  "vectors": [
+    {
+      "name": "drops host",
+      "kind": "header",
+      "key": "host",
+      "value": "x",
+      "expected": {
+        "kept": false,
+        "value": ""
+      }
+    },
+    {
+      "name": "drops Host",
+      "kind": "header",
+      "key": "Host",
+      "value": "x",
+      "expected": {
+        "kept": false,
+        "value": ""
+      }
+    },
+    {
+      "name": "drops content-length",
+      "kind": "header",
+      "key": "content-length",
+      "value": "x",
+      "expected": {
+        "kept": false,
+        "value": ""
+      }
+    },
+    {
+      "name": "drops Connection",
+      "kind": "header",
+      "key": "Connection",
+      "value": "x",
+      "expected": {
+        "kept": false,
+        "value": ""
+      }
+    },
+    {
+      "name": "drops accept-encoding",
+      "kind": "header",
+      "key": "accept-encoding",
+      "value": "x",
+      "expected": {
+        "kept": false,
+        "value": ""
+      }
+    },
+    {
+      "name": "header substring token",
+      "kind": "header",
+      "key": "x-token",
+      "value": "secret-token",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring key",
+      "kind": "header",
+      "key": "x-key",
+      "value": "secret-key",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring secret",
+      "kind": "header",
+      "key": "x-secret",
+      "value": "secret-secret",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring auth",
+      "kind": "header",
+      "key": "x-auth",
+      "value": "secret-auth",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring session",
+      "kind": "header",
+      "key": "x-session",
+      "value": "secret-session",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring signature",
+      "kind": "header",
+      "key": "x-signature",
+      "value": "secret-signature",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring cookie",
+      "kind": "header",
+      "key": "cookie",
+      "value": "secret-cookie",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring password",
+      "kind": "header",
+      "key": "x-password",
+      "value": "secret-password",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring authorization",
+      "kind": "header",
+      "key": "authorization",
+      "value": "secret-authorization",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring proxy-authorization",
+      "kind": "header",
+      "key": "Proxy-Authorization",
+      "value": "secret-proxy-authorization",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring x-api-key",
+      "kind": "header",
+      "key": "x-api-key",
+      "value": "secret-x-api-key",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring apikey",
+      "kind": "header",
+      "key": "apikey",
+      "value": "secret-apikey",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring access_token",
+      "kind": "header",
+      "key": "access_token",
+      "value": "secret-access_token",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring sig",
+      "kind": "header",
+      "key": "sig",
+      "value": "secret-sig",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring jwt",
+      "kind": "header",
+      "key": "jwt",
+      "value": "secret-jwt",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring bearer",
+      "kind": "header",
+      "key": "bearer",
+      "value": "secret-bearer",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring credential",
+      "kind": "header",
+      "key": "x-credential",
+      "value": "secret-credential",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring passwd",
+      "kind": "header",
+      "key": "passwd",
+      "value": "secret-passwd",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "header substring pwd",
+      "kind": "header",
+      "key": "pwd",
+      "value": "secret-pwd",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query token",
+      "kind": "query",
+      "key": "token",
+      "value": "v-token",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query apiKey",
+      "kind": "query",
+      "key": "apiKey",
+      "value": "v-apiKey",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query api_key",
+      "kind": "query",
+      "key": "api_key",
+      "value": "v-api_key",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query secret",
+      "kind": "query",
+      "key": "secret",
+      "value": "v-secret",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query auth",
+      "kind": "query",
+      "key": "auth",
+      "value": "v-auth",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query session",
+      "kind": "query",
+      "key": "session",
+      "value": "v-session",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query signature",
+      "kind": "query",
+      "key": "signature",
+      "value": "v-signature",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query cookie",
+      "kind": "query",
+      "key": "cookie",
+      "value": "v-cookie",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query password",
+      "kind": "query",
+      "key": "password",
+      "value": "v-password",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query access_token",
+      "kind": "query",
+      "key": "access_token",
+      "value": "v-access_token",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query sig",
+      "kind": "query",
+      "key": "sig",
+      "value": "v-sig",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query jwt",
+      "kind": "query",
+      "key": "jwt",
+      "value": "v-jwt",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query bearer",
+      "kind": "query",
+      "key": "bearer",
+      "value": "v-bearer",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query credential",
+      "kind": "query",
+      "key": "credential",
+      "value": "v-credential",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query passwd",
+      "kind": "query",
+      "key": "passwd",
+      "value": "v-passwd",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query pwd",
+      "kind": "query",
+      "key": "pwd",
+      "value": "v-pwd",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "mixed case header",
+      "kind": "header",
+      "key": "X-API-KEY",
+      "value": "abc",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "mixed case Api_Key header",
+      "kind": "header",
+      "key": "Api_Key",
+      "value": "abc",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "lower x-API-key",
+      "kind": "header",
+      "key": "x-API-key",
+      "value": "abc",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "underscore query Access_Token",
+      "kind": "query",
+      "key": "Access_Token",
+      "value": "abc",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "hyphen query access-token",
+      "kind": "query",
+      "key": "access-token",
+      "value": "abc",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "upper query TOKEN",
+      "kind": "query",
+      "key": "TOKEN",
+      "value": "abc",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "embedded session id",
+      "kind": "header",
+      "key": "X-Session-Id",
+      "value": "abc",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "set-cookie",
+      "kind": "header",
+      "key": "Set-Cookie",
+      "value": "a=b",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "strict: monkey",
+      "kind": "query",
+      "key": "monkey",
+      "value": "banana",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "strict: keyboard",
+      "kind": "query",
+      "key": "keyboard",
+      "value": "qwerty",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "strict: author",
+      "kind": "header",
+      "key": "author",
+      "value": "someone",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "strict: design",
+      "kind": "query",
+      "key": "design",
+      "value": "x",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "benign header accept",
+      "kind": "header",
+      "key": "accept",
+      "value": "*/*",
+      "expected": {
+        "kept": true,
+        "value": "*/*"
+      }
+    },
+    {
+      "name": "benign header user-agent",
+      "kind": "header",
+      "key": "user-agent",
+      "value": "curl/8.0",
+      "expected": {
+        "kept": true,
+        "value": "curl/8.0"
+      }
+    },
+    {
+      "name": "benign header content-type",
+      "kind": "header",
+      "key": "content-type",
+      "value": "application/json",
+      "expected": {
+        "kept": true,
+        "value": "application/json"
+      }
+    },
+    {
+      "name": "benign header x-request-id",
+      "kind": "header",
+      "key": "x-request-id",
+      "value": "r-1",
+      "expected": {
+        "kept": true,
+        "value": "r-1"
+      }
+    },
+    {
+      "name": "benign header accept-language",
+      "kind": "header",
+      "key": "accept-language",
+      "value": "en",
+      "expected": {
+        "kept": true,
+        "value": "en"
+      }
+    },
+    {
+      "name": "benign header cache-control",
+      "kind": "header",
+      "key": "cache-control",
+      "value": "no-cache",
+      "expected": {
+        "kept": true,
+        "value": "no-cache"
+      }
+    },
+    {
+      "name": "benign query page",
+      "kind": "query",
+      "key": "page",
+      "value": "2",
+      "expected": {
+        "kept": true,
+        "value": "2"
+      }
+    },
+    {
+      "name": "benign query q",
+      "kind": "query",
+      "key": "q",
+      "value": "in:inbox",
+      "expected": {
+        "kept": true,
+        "value": "in:inbox"
+      }
+    },
+    {
+      "name": "benign query count",
+      "kind": "query",
+      "key": "count",
+      "value": "5",
+      "expected": {
+        "kept": true,
+        "value": "5"
+      }
+    },
+    {
+      "name": "benign query package",
+      "kind": "query",
+      "key": "package",
+      "value": "com.example",
+      "expected": {
+        "kept": true,
+        "value": "com.example"
+      }
+    },
+    {
+      "name": "benign query max",
+      "kind": "query",
+      "key": "max",
+      "value": "25",
+      "expected": {
+        "kept": true,
+        "value": "25"
+      }
+    },
+    {
+      "name": "benign query lines",
+      "kind": "query",
+      "key": "lines",
+      "value": "100",
+      "expected": {
+        "kept": true,
+        "value": "100"
+      }
+    },
+    {
+      "name": "empty value is still redacted",
+      "kind": "header",
+      "key": "x-api-key",
+      "value": "",
+      "expected": {
+        "kept": true,
+        "value": "[redacted]"
+      }
+    },
+    {
+      "name": "query named host is kept",
+      "kind": "query",
+      "key": "host",
+      "value": "example.org",
+      "expected": {
+        "kept": true,
+        "value": "example.org"
+      }
+    }
+  ]
+}

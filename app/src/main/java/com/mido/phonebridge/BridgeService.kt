@@ -1005,7 +1005,7 @@ class HttpServer(
             method = method,
             path = path,
             query = query,
-            requestHeaders = session.headers.filterKeys { it !in HOP_BY_HOP },
+            requestHeaders = session.headers,
             appVersionName = BuildConfig.VERSION_NAME,
             appVersionCode = BuildConfig.VERSION_CODE
         )
@@ -1766,19 +1766,6 @@ class HttpServer(
 
     private companion object {
         const val TAG = "HttpServer"
-
-        /** Headers that say nothing about the caller and everything about TCP. */
-        /**
-         * Headers the audit must never record.
-         *
-         * `authorization` was MISSING until now, which meant a caller's bearer token was written
-         * verbatim into the append-only request log — permanently, and in the clear. The rest are
-         * genuinely hop-by-hop noise; that one is a credential. Redacted rather than dropped so
-         * the record still shows that the caller DID authenticate, without storing what with.
-         */
-        val HOP_BY_HOP = setOf(
-            "host", "content-length", "connection", "accept-encoding", "authorization"
-        )
     }
 
     /**
