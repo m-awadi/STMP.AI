@@ -9,11 +9,11 @@ import android.view.WindowManager
 import androidx.biometric.BiometricManager
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import com.mido.phonebridge.ApprovalActivity
+import com.mido.phonebridge.Fingerprint
 import com.mido.phonebridge.ApprovalGate
 import com.mido.phonebridge.core.Verb
 import com.mido.phonebridge.policy.Mode
 import com.mido.phonebridge.policy.Rule
-import com.mido.phonebridge.screenshots.BIOMETRIC_ERROR_LOCKOUT
 import com.mido.phonebridge.screenshots.Fixtures
 import com.mido.phonebridge.screenshots.GateFixtures
 import com.mido.phonebridge.screenshots.findByText
@@ -281,14 +281,48 @@ class ApprovalActivityBehaviourTest {
         assertTrue(a.text(ObscuredTouchGuard.BANNER_TEXT)!!.isShown)
     }
 
+    // --- BIO: a sensor fault never downgrades a fingerprint approval ------------------------------
+
+    private fun fingerprintGate(code: Int, deviceSecure: Boolean): ApprovalActivity {
+        ApprovalActivity.canAuthenticateForTest = code
+        Fingerprint.deviceSecureForTest = deviceSecure
+        return GateFixtures.launch(GateFixtures.contacts(biometric = true), "GET /contacts")
+    }
+
     @Test
-    fun `a locked-out fingerprint is re-checked and approve comes back`() {
-        ApprovalActivity.canAuthenticateForTest = BIOMETRIC_ERROR_LOCKOUT
-        val a = GateFixtures.launch(GateFixtures.contacts(biometric = true), "GET /contacts")
-        assertTrue(a.text(GateCopy.BIO_LOCKED_TITLE)!!.isShown)
+    fun `a locked-out sensor with a phone PIN says to use the PIN and keeps APPROVE live`() {
+        val a = fingerprintGate(Fingerprint.BIOMETRIC_ERROR_LOCKOUT, deviceSecure = true)
+        assertTrue(a.text(GateCopy.BIO_USE_PIN)!!.isShown)
+        assertNull("no plain-tap wording", a.text("plain tap"))
+    }
+
+    @Test
+    fun `APPROVE in that state asks for BIOMETRIC_STRONG or DEVICE_CREDENTIAL and does not approve by itself`() {
+        val a = fingerprintGate(BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE, deviceSecure = true)
+        a.text("APPROVE")!!.performClick()
+        idle()
+        assertEquals(Fingerprint.fallbackSpec(), ApprovalActivity.lastCredentialPromptForTest)
+        assertNull("asking is not approving", pending.approved)
+        assertTrue(ApprovalGate.isCurrent(GateFixtures.ID))
+    }
+
+    @Test
+    fun `with no screen lock a faulting sensor fails closed with no prompt and no approval`() {
+        val a = fingerprintGate(BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE, deviceSecure = false)
+        assertTrue(a.text(GateCopy.BIO_LOCKED)!!.isShown)
+        a.text("APPROVE")!!.performClick()
+        idle()
+        assertNull(ApprovalActivity.lastCredentialPromptForTest)
+        assertNull(pending.approved)
+    }
+
+    @Test
+    fun `a locked-out fingerprint is re-checked and the banner goes when it returns`() {
+        val a = fingerprintGate(Fingerprint.BIOMETRIC_ERROR_LOCKOUT, deviceSecure = true)
+        assertTrue(a.text(GateCopy.BIO_USE_PIN)!!.isShown)
         ApprovalActivity.canAuthenticateForTest = BiometricManager.BIOMETRIC_SUCCESS
         shadowOf(Looper.getMainLooper()).idleFor(Duration.ofMillis(GateArming.BIO_RECHECK_MS + 500))
-        assertFalse(a.text(GateCopy.BIO_LOCKED_TITLE)!!.isShown)
+        assertFalse(a.text(GateCopy.BIO_USE_PIN)!!.isShown)
     }
 
     @Test

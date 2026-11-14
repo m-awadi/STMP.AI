@@ -3,6 +3,7 @@ package com.mido.phonebridge.screenshots
 import android.content.Intent
 import android.provider.Settings
 import com.mido.phonebridge.ApprovalActivity
+import com.mido.phonebridge.Fingerprint
 import com.mido.phonebridge.ApprovalGate
 import com.mido.phonebridge.ApprovalGate.Row
 import com.mido.phonebridge.core.Verb
@@ -149,6 +150,9 @@ object GateFixtures {
         queue().clear()
         GateClock.nowMs = { System.currentTimeMillis() }
         ApprovalActivity.canAuthenticateForTest = null
+        ApprovalActivity.lastCredentialPromptForTest = null
+        Fingerprint.canAuthenticateForTest = null
+        Fingerprint.deviceSecureForTest = null
         reducedMotion(false)
         Fixtures.app.getSharedPreferences("phonebridge_vault", 0).edit().clear().commit()
     }

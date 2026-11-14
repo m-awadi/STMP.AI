@@ -275,31 +275,36 @@ class OptionsFragment : BridgeFragment() {
     private fun approvalsSection(policy: Policy) {
         header("Approvals")
         val status = Fingerprint.status(hostActivity)
-        if (status is Fingerprint.Status.Unusable && policy.fingerprintForModals) {
-            // A phone that cannot read a fingerprint never keeps a gate it cannot approve.
+        if (status is Fingerprint.Status.PermanentlyUnusable && policy.fingerprintForModals) {
+            // A phone that can never read a fingerprint never keeps a gate it cannot approve. A
+            // temporary fault is NOT this: opening Settings must not write the setting.
             FingerprintSetting.forceOff(ctx, status.reason, source = "settings")
         }
         val panel = Panel.create(ctx)
         val row = when (status) {
-            is Fingerprint.Status.Unusable -> ToggleRow.create(
+            is Fingerprint.Status.PermanentlyUnusable -> ToggleRow.create(
                 ctx, "Fingerprint for approvals", status.reason, on = false, enabled = false,
             ) { }
-            Fingerprint.Status.Usable -> ToggleRow.create(
-                ctx, "Fingerprint for approvals",
+            is Fingerprint.Status.TemporarilyUnavailable -> fingerprintRow(policy, status.reason)
+            Fingerprint.Status.Usable -> fingerprintRow(
+                policy,
                 if (policy.fingerprintForModals) {
                     "In Paranoid mode, approving a request asks for your fingerprint after the tap."
                 } else {
                     "In Paranoid mode, approving is a tap, or a hold for actions that run or delete."
                 },
-                policy.fingerprintForModals,
-            ) { want ->
-                FingerprintSetting.request(this, want, onError = { saveError = it }) {
-                    renderPosted()
-                }
-            }
+            )
         }
         panel.addView(row)
         container.addView(panel)
+    }
+
+    private fun fingerprintRow(policy: Policy, description: String) = ToggleRow.create(
+        ctx, "Fingerprint for approvals", description, policy.fingerprintForModals,
+    ) { want ->
+        FingerprintSetting.request(this, want, onError = { saveError = it }) {
+            renderPosted()
+        }
     }
 
     // --- permissions -----------------------------------------------------------------------------

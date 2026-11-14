@@ -13,7 +13,7 @@ change from undoing it. Dates are on each heading; find a release's commit with
 `git log --oneline --grep "<version>"` — see the note below on why an entry cannot carry its own
 hash.
 
-Current build: **v0.52.19 (build 334)**.
+Current build: **v0.52.20 (build 335)**.
 
 ---
 
@@ -5676,9 +5676,15 @@ devDependencies. `node_modules/` is gitignored.
 ## 0.52.18 (build 333) — 2026-11-14
 - A plugin name with hidden characters in the request log, the request detail headline and its Plugin row draws the `\u{202E}`-style marks in the caution colour again, like every other stored text.
 
-## 0.52.19 (build 334) — 2026-11-14 — CURRENT
+## 0.52.19 (build 334) — 2026-11-14
 - The request log no longer stores a credential. Any header or query parameter whose name contains token, key, secret, auth, session, signature, cookie, password, jwt, bearer, credential, passwd, pwd or sig keeps its name and shows `[redacted]` as its value, and the Authorization header is now kept as `[redacted]` instead of being left out.
 - The match is strict on purpose: a harmless name that merely contains one of those words (monkey, keyboard, author) is redacted too, because a leaked credential cannot be taken back from the log.
+
+## 0.52.20 (build 335) — 2026-11-14 — CURRENT
+- A fingerprint sensor that is locked out or faulting for a moment no longer turns "Fingerprint for approvals" off; opening Home or Settings leaves the switch as you set it.
+- While the sensor is unavailable, an approval that needs your fingerprint asks for your phone PIN instead, and the card says so. With no screen lock set, it cannot be approved and says why.
+- Turning "Fingerprint for approvals" off while the sensor is unavailable asks for your phone PIN; turning it on still needs a working fingerprint.
+- Only a phone with no fingerprint sensor, or none enrolled, switches the setting off by itself, as before.
 
 ## Keeping this file honest
 

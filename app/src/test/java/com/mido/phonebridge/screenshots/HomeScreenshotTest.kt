@@ -10,6 +10,7 @@ import com.mido.phonebridge.policy.Mode
 import com.mido.phonebridge.policy.Rule
 import com.mido.phonebridge.ui.Theme
 import org.junit.Assert.assertEquals
+import org.junit.After
 import org.junit.Test
 
 /** Home: every bridge, gate, recent-requests, request-log and Updates state (WP04 section 11.2). */
@@ -85,6 +86,9 @@ class HomeScreenshotTest(variant: Variant) : ShotTest(variant) {
     @Test fun gate_paranoid() { Fixtures.gate(GlobalMode.PARANOID); capture("gate_paranoid") }
     @Test fun gate_dont_disturb() { Fixtures.gate(GlobalMode.DONT_DISTURB); capture("gate_dont_disturb") }
     @Test fun gate_unreadable() { Fixtures.gateUnreadable(); capture("gate_unreadable") }
+    @After fun resetFingerprint() = Fixtures.resetFingerprint()
+
+    @Test fun gate_fp_temporary() { Fixtures.fingerprintTemporarilyUnavailable(); capture("gate_fp_temporary") }
     @Test fun gate_fp_unusable() { Fixtures.fingerprintUnusable(); capture("gate_fp_unusable") }
 
     // --- recent requests -----------------------------------------------------------------------

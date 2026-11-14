@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.biometric.BiometricManager
 import androidx.core.widget.NestedScrollView
 import com.mido.phonebridge.ApprovalActivity
+import com.mido.phonebridge.Fingerprint
 import com.mido.phonebridge.ApprovalGate
 import com.mido.phonebridge.ApprovalGate.Row
 import com.mido.phonebridge.ai.RequestSummary
@@ -98,9 +99,18 @@ class ApprovalScreenshotTest(variant: Variant) : ShotTest(variant) {
         contacts("bio_not_enrolled", view = GateFixtures.contacts(biometric = true))
     }
 
+    /** The sensor is locked out and the phone has no screen lock: nothing can approve. */
     @Test fun bio_locked_out() {
         ApprovalActivity.canAuthenticateForTest = BIOMETRIC_ERROR_LOCKOUT
+        Fingerprint.deviceSecureForTest = false
         contacts("bio_locked_out", view = GateFixtures.contacts(biometric = true))
+    }
+
+    /** The sensor is locked out and the phone has a PIN: Approve asks for the PIN. */
+    @Test fun bio_use_pin() {
+        ApprovalActivity.canAuthenticateForTest = BIOMETRIC_ERROR_LOCKOUT
+        Fingerprint.deviceSecureForTest = true
+        contacts("bio_use_pin", view = GateFixtures.contacts(biometric = true))
     }
 
     @Test fun vault_broken() {
@@ -220,6 +230,7 @@ class ApprovalScreenshotTest(variant: Variant) : ShotTest(variant) {
 
     @Test fun password_bio_locked_out() {
         ApprovalActivity.canAuthenticateForTest = BIOMETRIC_ERROR_LOCKOUT
+        Fingerprint.deviceSecureForTest = false
         val a = GateFixtures.launch(GateFixtures.ssh("sudo -S apt update", sudo = true, biometric = true), "POST /ssh/kvm-box")
         obscuredTap(a)
         shot(a, "password_bio_locked_out")

@@ -11,6 +11,7 @@ import com.mido.phonebridge.policy.AiBackend
 import com.mido.phonebridge.policy.ExternalDialect
 import com.mido.phonebridge.ui.Theme
 import org.junit.Assert.assertNotNull
+import org.junit.After
 import org.junit.Test
 import org.robolectric.Shadows.shadowOf
 
@@ -34,6 +35,10 @@ class SettingsScreenshotTest(variant: Variant) : ShotTest(variant) {
         v!!.performClick()
         org.robolectric.shadows.ShadowLooper.idleMainLooper()
     }
+
+    @After fun resetFingerprint() = Fixtures.resetFingerprint()
+
+    @Test fun fingerprint_temporary() { Fixtures.fingerprintTemporarilyUnavailable(); shoot("fingerprint_temporary") }
 
     @Test fun default_ai_off() = shoot("default_ai_off")
 

@@ -117,6 +117,10 @@ class ApprovalActivity : FragmentActivity() {
          */
         @androidx.annotation.VisibleForTesting
         @Volatile internal var canAuthenticateForTest: Int? = null
+
+        /** Test seam: the authenticators of the last PIN-fallback prompt this Activity built. */
+        @androidx.annotation.VisibleForTesting
+        @Volatile internal var lastCredentialPromptForTest: Fingerprint.PromptSpec? = null
     }
 
     private val requestId: Long get() = intent.getLongExtra(EXTRA_ID, -1L)
@@ -291,13 +295,13 @@ class ApprovalActivity : FragmentActivity() {
         // A password request is not approvable on an empty field: sudo would reject it seconds
         // later with a message about a terminal rather than about the typo.
         val passwordReady = !needsPassword || (passwordField?.text?.isNotEmpty() == true)
-        val bioBlocked = gesture == ApproveGesture.TAP_THEN_BIOMETRIC && bioStatus != BioStatus.Usable
+        val bioBlocked = gesture == ApproveGesture.TAP_THEN_BIOMETRIC && !bioStatus.canApprove
         views.setApproveArmed(phase is ArmPhase.Armed && !bioBlocked && passwordReady, secondsUntilArmed)
     }
 
-    /** D20: LockedOut clears by itself, so the screen re-checks it and Approve comes back on its own. */
+    /** D20: a temporary sensor fault clears by itself, so the screen re-checks it and the banner follows. */
     private fun recheckBio() {
-        if (bioStatus != BioStatus.LockedOut) return
+        if (bioStatus != BioStatus.NoFallback && bioStatus != BioStatus.UsePin) return
         val now = SystemClock.uptimeMillis()
         if (now - lastBioCheckMs < GateArming.BIO_RECHECK_MS) return
         lastBioCheckMs = now
@@ -316,7 +320,8 @@ class ApprovalActivity : FragmentActivity() {
         val (title, body) = when (bioStatus) {
             BioStatus.Usable -> return
             BioStatus.NotEnrolled -> GateCopy.BIO_UNAVAILABLE_TITLE to GateCopy.BIO_NOT_ENROLLED
-            BioStatus.LockedOut -> GateCopy.BIO_LOCKED_TITLE to GateCopy.BIO_LOCKED
+            BioStatus.UsePin -> GateCopy.BIO_PIN_TITLE to GateCopy.BIO_USE_PIN
+            BioStatus.NoFallback -> GateCopy.BIO_LOCKED_TITLE to GateCopy.BIO_LOCKED
             BioStatus.VaultBroken -> GateCopy.BIO_UNAVAILABLE_TITLE to GateCopy.BIO_VAULT_BROKEN
         }
         views.bioTitle.text = title
@@ -331,7 +336,7 @@ class ApprovalActivity : FragmentActivity() {
     private fun onApprove(id: Long, by: String) {
         if (stamping) return
         if (gesture == ApproveGesture.TAP_THEN_BIOMETRIC) {
-            promptBiometric { afterGesture(id, by) }
+            promptBiometric { viaPin -> afterGesture(id, if (viaPin) GateCopy.BY_DEVICE_CREDENTIAL else by) }
         } else {
             afterGesture(id, by)
         }
@@ -367,7 +372,9 @@ class ApprovalActivity : FragmentActivity() {
                 views.exception?.toggle()
                 views.exception?.keyView?.let { Haptics.perform(it, HapticEvent.TOGGLE) }
             }
-            ApproveGesture.TAP_THEN_BIOMETRIC -> promptBiometric { approveWithException(id, "biometric") }
+            ApproveGesture.TAP_THEN_BIOMETRIC -> promptBiometric { viaPin ->
+                approveWithException(id, if (viaPin) GateCopy.BY_DEVICE_CREDENTIAL else "biometric")
+            }
             ApproveGesture.TAP -> approveWithException(id, "tap")
         }
     }
@@ -563,7 +570,18 @@ class ApprovalActivity : FragmentActivity() {
      * to the request: it stays pending on its own countdown, APPROVE stays live, and tapping it
      * again re-prompts — the window is the only limit.
      */
-    private fun promptBiometric(onApproved: () -> Unit) {
+    private fun promptBiometric(onApproved: (viaPin: Boolean) -> Unit) {
+        // The sensor itself decides the route, never a stale banner: a temporary fault asks for the
+        // phone PIN (no vault cipher: a crypto-bound prompt cannot take a credential); anything else
+        // that is not Usable fails closed with no prompt and no approval.
+        when (bioStatus()) {
+            BioStatus.Usable -> Unit
+            BioStatus.UsePin -> return promptDeviceCredential { onApproved(true) }
+            else -> {
+                Log.w(TAG, "approval not possible right now; not approving")
+                return
+            }
+        }
         // Prepare the vault cipher FIRST: if the key was invalidated there is no prompt worth
         // showing. Failing closed here is the whole point.
         val cipher = try {
@@ -572,13 +590,15 @@ class ApprovalActivity : FragmentActivity() {
             Log.w(TAG, "vault cipher unavailable (${e.message}); not approving")
             return
         }
-        val authenticators = authenticatorsFor(hasVault = cipher != null)
-        val can = BiometricManager.from(this).canAuthenticate(authenticators)
-        if (can != BiometricManager.BIOMETRIC_SUCCESS) {
-            // Fails closed: no prompt, no approval. The banner states the reason; this guard
-            // exists so a stray tap can never approve.
-            Log.w(TAG, "biometric unavailable (code=$can); not approving")
-            return
+        // bioStatus() above already ruled out an unusable sensor; the crypto-bound prompt re-checks
+        // STRONG itself, because a vault prompt can never take a credential.
+        if (cipher != null) {
+            val can = BiometricManager.from(this)
+                .canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG)
+            if (can != BiometricManager.BIOMETRIC_SUCCESS) {
+                Log.w(TAG, "biometric unavailable (code=$can); not approving")
+                return
+            }
         }
         val prompt = BiometricPrompt(
             this,
@@ -607,7 +627,7 @@ class ApprovalActivity : FragmentActivity() {
                     }
                     // Success wins the race: resolve() is idempotent — if the window DID close
                     // first, it is a no-op and logged, never a wrong approval.
-                    onApproved()
+                    onApproved(false)
                 }
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                     // Dismissed / locked out: leave the request pending; APPROVE stays live.
@@ -622,7 +642,12 @@ class ApprovalActivity : FragmentActivity() {
         val info = BiometricPrompt.PromptInfo.Builder()
             .setTitle(if (cipher != null) "Unlock and approve" else "Approve request")
             .setSubtitle(endpointLabel())
-            .setAllowedAuthenticators(authenticators)
+        if (cipher != null) {
+            info.setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_STRONG)
+        } else {
+            // Before the vault exists there is nothing to bind to; the API-level split lives in one place.
+            Fingerprint.applyFallback(info)
+        }
         // A STRONG-only prompt REQUIRES a negative button (the platform throws without one). With
         // device credential allowed the system supplies its own, so adding one would be an error.
         if (cipher != null) info.setNegativeButtonText("Cancel")
@@ -633,10 +658,23 @@ class ApprovalActivity : FragmentActivity() {
         }
     }
 
-    /** Crypto-bound when a vault exists: the platform forbids DEVICE_CREDENTIAL with a CryptoObject. */
-    private fun authenticatorsFor(hasVault: Boolean): Int =
-        if (hasVault) BiometricManager.Authenticators.BIOMETRIC_STRONG
-        else BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.DEVICE_CREDENTIAL
+    /**
+     * The sensor is temporarily away: approve with the phone PIN (or a fingerprint that comes
+     * back mid-prompt). Not crypto-bound, so the vault stays as it was. Only a success approves;
+     * cancel and every error leave the request pending on its own timeout.
+     */
+    private fun promptDeviceCredential(onApproved: () -> Unit) {
+        val spec = Fingerprint.fallbackSpec()
+        lastCredentialPromptForTest = spec
+        val info = Fingerprint.applyFallback(
+            BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Approve with your phone PIN")
+                .setSubtitle(endpointLabel()),
+            spec,
+        ).build()
+        BiometricPrompt(this, ContextCompat.getMainExecutor(this), Fingerprint.CredentialCallback(onApproved))
+            .authenticate(info)
+    }
 
     private fun endpointLabel(): String =
         GateCopy.bioSubtitle(intent.getStringExtra(EXTRA_ENDPOINT))
@@ -647,23 +685,26 @@ class ApprovalActivity : FragmentActivity() {
      * to Settings to add a fingerprint they already had. Naming the cause is what lets the screen
      * say the right thing.
      */
-    private enum class BioStatus {
+    private enum class BioStatus(val canApprove: Boolean) {
         /** The prompt will work if the human passes it. */
-        Usable,
+        Usable(true),
 
         /** Nothing is enrolled: the device cannot satisfy it until Settings is used. */
-        NotEnrolled,
+        NotEnrolled(false),
 
-        /** Temporarily locked out (too many attempts). A wait fixes it; nothing to configure. */
-        LockedOut,
+        /** The sensor is temporarily away (lockout, fault) but the phone has a PIN: approve with it. */
+        UsePin(true),
+
+        /** The sensor is temporarily away and there is no screen lock: nothing can approve. Fail closed. */
+        NoFallback(false),
 
         /** The vault key is gone or invalidated. The vault has to be recreated; APPROVE cannot. */
-        VaultBroken,
+        VaultBroken(false),
     }
 
     /**
-     * Resolve the cause. Mirrors [promptBiometric]'s authenticator choice exactly, so the banner
-     * and the prompt can never disagree about what is possible.
+     * Resolve the cause, from the same [Fingerprint.classify] the Home and Settings switch uses, so
+     * the banner, the prompt and the switch can never disagree about what is possible.
      */
     private fun bioStatus(): BioStatus {
         val hasVault = SecretVault.exists(this)
@@ -676,15 +717,15 @@ class ApprovalActivity : FragmentActivity() {
                 return BioStatus.VaultBroken
             }
         }
-        val code = canAuthenticateForTest ?: BiometricManager.from(this).canAuthenticate(authenticatorsFor(hasVault))
-        return when (code) {
-            BiometricManager.BIOMETRIC_SUCCESS -> BioStatus.Usable
-            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> BioStatus.NotEnrolled
-            // 7 == BIOMETRIC_ERROR_LOCKOUT: too many attempts, clears by itself.
-            7 -> BioStatus.LockedOut
-            // A hardware fault is NOT a lockout: nothing the human does here fixes it, and telling
-            // them to wait would be a lie.
-            else -> BioStatus.VaultBroken
+        val code = canAuthenticateForTest
+            ?: BiometricManager.from(this).canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG)
+        return when (val sensor = Fingerprint.classify(code)) {
+            Fingerprint.Status.Usable -> BioStatus.Usable
+            is Fingerprint.Status.PermanentlyUnusable -> BioStatus.NotEnrolled
+            // Lockout, a hardware fault, an update pending: all clear on their own, so the PIN is
+            // the fallback, and without a screen lock nothing can approve.
+            is Fingerprint.Status.TemporarilyUnavailable ->
+                if (Fingerprint.deviceCredentialReady(this)) BioStatus.UsePin else BioStatus.NoFallback
         }
     }
 

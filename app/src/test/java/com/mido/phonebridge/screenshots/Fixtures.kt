@@ -336,6 +336,17 @@ object Fixtures {
             .setCanAuthenticate(false)
     }
 
+    /** The sensor is locked out (a temporary fault): the switch stays as stored and says to use the PIN. */
+    fun fingerprintTemporarilyUnavailable() {
+        com.mido.phonebridge.Fingerprint.canAuthenticateForTest = com.mido.phonebridge.Fingerprint.BIOMETRIC_ERROR_LOCKOUT
+        com.mido.phonebridge.Fingerprint.deviceSecureForTest = true
+    }
+
+    fun resetFingerprint() {
+        com.mido.phonebridge.Fingerprint.canAuthenticateForTest = null
+        com.mido.phonebridge.Fingerprint.deviceSecureForTest = null
+    }
+
     /**
      * Three visible requests (READ, EXECUTE, DELETE) plus one noise row that must not show,
      * one minute apart from [NOW_MS].

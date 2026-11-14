@@ -137,8 +137,13 @@ object GateCopy {
 
     const val BIO_UNAVAILABLE_TITLE = "Approve is unavailable"
     const val BIO_NOT_ENROLLED = "No fingerprint is enrolled. Add one in Android Settings, then come back — Deny still works."
-    const val BIO_LOCKED_TITLE = "Fingerprint locked for now"
-    const val BIO_LOCKED = "Too many attempts. It clears by itself; this screen checks again and Approve comes back on its own."
+    const val BIO_PIN_TITLE = "Fingerprint unavailable"
+    const val BIO_USE_PIN = "Fingerprint is unavailable right now. Use your phone PIN to approve."
+    const val BIO_LOCKED_TITLE = "Fingerprint unavailable"
+    const val BIO_LOCKED = "Fingerprint is unavailable right now, and this phone has no PIN, pattern or password to use instead. " +
+        "Set a screen lock in Android Settings, or Deny. This screen checks again on its own."
+    /** The receipt's "by" for an approval that the phone PIN (or a fingerprint in the PIN prompt) gave. */
+    const val BY_DEVICE_CREDENTIAL = "device credential"
     const val BIO_VAULT_BROKEN = "The vault key is invalid or was reset (a new fingerprint can do this). " +
         "Reset the vault in Settings → Secret vault and add the secrets again. Deny still works."
     const val BIO_SUBTITLE_FALLBACK = "STMP"

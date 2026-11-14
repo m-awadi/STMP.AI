@@ -693,12 +693,22 @@ class HomeFragment : BridgeFragment(), BridgeControl {
         fingerprintWhy.visibility = View.GONE
         // Can this phone even ask for a fingerprint? Same check the modal and the vault use.
         when (val status = Fingerprint.status(hostActivity)) {
-            is Fingerprint.Status.Unusable -> {
+            is Fingerprint.Status.PermanentlyUnusable -> {
                 // Forced OFF, not merely greyed: with the policy ON and no usable biometric,
                 // APPROVE never enables, so every Paranoid request would become unapprovable.
                 FingerprintSetting.forceOff(requireContext(), status.reason, source = "home")
                 fingerprintRocker.setCheckedImmediately(false)
                 fingerprintRocker.isEnabled = false
+                fingerprintWhy.text = status.reason
+                fingerprintWhy.setTextColor(p.cautionText)
+                fingerprintWhy.visibility = View.VISIBLE
+            }
+            is Fingerprint.Status.TemporarilyUnavailable -> {
+                // A sensor fault or lockout is not a decision: render writes NOTHING here. The
+                // switch shows what is stored and can still be turned off with the phone PIN.
+                fingerprintRocker.isEnabled = true
+                val stored = policy.fingerprintForModals
+                if (fingerprintRocker.checked != stored) fingerprintRocker.setCheckedAnimated(stored)
                 fingerprintWhy.text = status.reason
                 fingerprintWhy.setTextColor(p.cautionText)
                 fingerprintWhy.visibility = View.VISIBLE
