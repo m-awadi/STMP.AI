@@ -5,7 +5,9 @@ Current build: **v0.1.0 (build 1)**. This file has its own version line, separat
 ---
 
 ## 0.1.0 (build 1) — 2026-11-14 — CURRENT
-- The iOS app now has a starting project with a tab bar, the colours, type and spacing used across the app, and the checks that keep later work in step.
+- The iOS client has a scaffold with the frozen STMPCore seams, fail-closed fakes and the 37 route declarations pinned by contract fixtures.
+- The app shell launches to a tab layout with placeholders, Instrument design tokens and Geist fonts.
+- The definition-of-done script checks hygiene, ownership, the changelog, the package and the simulator tests.
 
 ## Keeping this file honest
 
