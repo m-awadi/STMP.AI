@@ -1,0 +1,634 @@
+{
+  "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:36@ce38676ecf55b033a050a24b2236ad5633908df6",
+  "_expect": [
+    "pairs"
+  ],
+  "pairs": [
+    {
+      "name": "ink on body",
+      "fg": "ink",
+      "bg": "body",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:38@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.ink"
+      ]
+    },
+    {
+      "name": "etched on body",
+      "fg": "etched",
+      "bg": "body",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:39@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.etched"
+      ]
+    },
+    {
+      "name": "okText on body",
+      "fg": "okText",
+      "bg": "body",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:40@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.okText"
+      ]
+    },
+    {
+      "name": "cautionText on body",
+      "fg": "cautionText",
+      "bg": "body",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:41@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.cautionText"
+      ]
+    },
+    {
+      "name": "signalText on body",
+      "fg": "signalText",
+      "bg": "body",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:42@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.signalText"
+      ]
+    },
+    {
+      "name": "ink on panel",
+      "fg": "ink",
+      "bg": "panel",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:38@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.ink"
+      ]
+    },
+    {
+      "name": "etched on panel",
+      "fg": "etched",
+      "bg": "panel",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:39@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.etched"
+      ]
+    },
+    {
+      "name": "okText on panel",
+      "fg": "okText",
+      "bg": "panel",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:40@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.okText"
+      ]
+    },
+    {
+      "name": "cautionText on panel",
+      "fg": "cautionText",
+      "bg": "panel",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:41@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.cautionText"
+      ]
+    },
+    {
+      "name": "signalText on panel",
+      "fg": "signalText",
+      "bg": "panel",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:42@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.signalText"
+      ]
+    },
+    {
+      "name": "ink on sunken",
+      "fg": "ink",
+      "bg": "sunken",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:38@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.ink"
+      ]
+    },
+    {
+      "name": "etched on sunken",
+      "fg": "etched",
+      "bg": "sunken",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:39@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.etched"
+      ]
+    },
+    {
+      "name": "okText on sunken",
+      "fg": "okText",
+      "bg": "sunken",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:40@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.okText"
+      ]
+    },
+    {
+      "name": "cautionText on sunken",
+      "fg": "cautionText",
+      "bg": "sunken",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:41@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.cautionText"
+      ]
+    },
+    {
+      "name": "signalText on sunken",
+      "fg": "signalText",
+      "bg": "sunken",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:42@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.signalText"
+      ]
+    },
+    {
+      "name": "etched on tapePaper",
+      "fg": "etched",
+      "bg": "tapePaper",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:44@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.etched"
+      ]
+    },
+    {
+      "name": "ink on tapePaper",
+      "fg": "ink",
+      "bg": "tapePaper",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:45@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.ink"
+      ]
+    },
+    {
+      "name": "onInk on ink",
+      "fg": "onInk",
+      "bg": "ink",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:46@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.onInk"
+      ]
+    },
+    {
+      "name": "onSignal on signal",
+      "fg": "onSignal",
+      "bg": "signal",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:47@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.onSignal"
+      ]
+    },
+    {
+      "name": "okText on okSurface",
+      "fg": "okText",
+      "bg": "okSurface",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:48@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.okText"
+      ]
+    },
+    {
+      "name": "cautionText on cautionSurface",
+      "fg": "cautionText",
+      "bg": "cautionSurface",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:49@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.cautionText"
+      ]
+    },
+    {
+      "name": "signalText on signalSurface",
+      "fg": "signalText",
+      "bg": "signalSurface",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:50@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.signalText"
+      ]
+    },
+    {
+      "name": "ink on okSurface",
+      "fg": "ink",
+      "bg": "okSurface",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:51@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.ink"
+      ]
+    },
+    {
+      "name": "ink on cautionSurface",
+      "fg": "ink",
+      "bg": "cautionSurface",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:52@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.ink"
+      ]
+    },
+    {
+      "name": "ink on signalSurface",
+      "fg": "ink",
+      "bg": "signalSurface",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:53@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.ink"
+      ]
+    },
+    {
+      "name": "onInk on okText",
+      "fg": "onInk",
+      "bg": "okText",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:54@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.onInk"
+      ]
+    },
+    {
+      "name": "onInk on cautionText",
+      "fg": "onInk",
+      "bg": "cautionText",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:55@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.onInk"
+      ]
+    },
+    {
+      "name": "onInk on signalText",
+      "fg": "onInk",
+      "bg": "signalText",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:56@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.onInk"
+      ]
+    },
+    {
+      "name": "readoutText on readout",
+      "fg": "readoutText",
+      "bg": "readout",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:57@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.readoutText"
+      ]
+    },
+    {
+      "name": "readoutCommand on readout",
+      "fg": "readoutCommand",
+      "bg": "readout",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:58@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.readoutCommand"
+      ]
+    },
+    {
+      "name": "readoutMuted on readout",
+      "fg": "readoutMuted",
+      "bg": "readout",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:59@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.readoutMuted"
+      ]
+    },
+    {
+      "name": "readoutDanger on readout",
+      "fg": "readoutDanger",
+      "bg": "readout",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:60@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.readoutDanger"
+      ]
+    },
+    {
+      "name": "readoutString on readout",
+      "fg": "readoutString",
+      "bg": "readout",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:61@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.readoutString"
+      ]
+    },
+    {
+      "name": "signal underline on readout",
+      "fg": "signal",
+      "bg": "readout",
+      "min": 3.0,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:62@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.signal"
+      ]
+    },
+    {
+      "name": "rockerOffText on rockerCapOff",
+      "fg": "rockerOffText",
+      "bg": "rockerCapOff",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:63@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.rockerOffText"
+      ]
+    },
+    {
+      "name": "okGlyph on body",
+      "fg": "okGlyph",
+      "bg": "body",
+      "min": 3.0,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:66@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.okGlyph"
+      ]
+    },
+    {
+      "name": "cautionGlyph on body",
+      "fg": "cautionGlyph",
+      "bg": "body",
+      "min": 3.0,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:67@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.cautionGlyph"
+      ]
+    },
+    {
+      "name": "signalGlyph on body",
+      "fg": "signalGlyph",
+      "bg": "body",
+      "min": 3.0,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:68@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.signalGlyph"
+      ]
+    },
+    {
+      "name": "outline on body",
+      "fg": "outline",
+      "bg": "body",
+      "min": 3.0,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:69@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.outline"
+      ]
+    },
+    {
+      "name": "okGlyph on panel",
+      "fg": "okGlyph",
+      "bg": "panel",
+      "min": 3.0,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:66@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.okGlyph"
+      ]
+    },
+    {
+      "name": "cautionGlyph on panel",
+      "fg": "cautionGlyph",
+      "bg": "panel",
+      "min": 3.0,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:67@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.cautionGlyph"
+      ]
+    },
+    {
+      "name": "signalGlyph on panel",
+      "fg": "signalGlyph",
+      "bg": "panel",
+      "min": 3.0,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:68@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.signalGlyph"
+      ]
+    },
+    {
+      "name": "outline on panel",
+      "fg": "outline",
+      "bg": "panel",
+      "min": 3.0,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:69@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.outline"
+      ]
+    },
+    {
+      "name": "LED ring okText on panel",
+      "fg": "okText",
+      "bg": "panel",
+      "min": 3.0,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:71@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.okText"
+      ]
+    },
+    {
+      "name": "LED ring cautionText on panel",
+      "fg": "cautionText",
+      "bg": "panel",
+      "min": 3.0,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:72@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.cautionText"
+      ]
+    },
+    {
+      "name": "LED ring signalText on panel",
+      "fg": "signalText",
+      "bg": "panel",
+      "min": 3.0,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:73@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.signalText"
+      ]
+    },
+    {
+      "name": "LED ring etched on panel",
+      "fg": "etched",
+      "bg": "panel",
+      "min": 3.0,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:74@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.etched"
+      ]
+    },
+    {
+      "name": "focus on body",
+      "fg": "focus",
+      "bg": "body",
+      "min": 3.0,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:75@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.focus"
+      ]
+    },
+    {
+      "name": "rockerCapOff on rockerTrack",
+      "fg": "rockerCapOff",
+      "bg": "rockerTrack",
+      "min": 3.0,
+      "darkOnly": true,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:79@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.rockerCapOff"
+      ]
+    },
+    {
+      "name": "rockerTrack edge (outline) on panel",
+      "fg": "outline",
+      "bg": "panel",
+      "min": 3.0,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:80@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.outline"
+      ]
+    },
+    {
+      "name": "verb chip edge (outline) on sunken",
+      "fg": "outline",
+      "bg": "sunken",
+      "min": 3.0,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:81@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.outline"
+      ]
+    },
+    {
+      "name": "ink on verb chip sunken fill",
+      "fg": "ink",
+      "bg": "sunken",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:82@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.ink"
+      ]
+    },
+    {
+      "name": "progress label (ink) on its fill over body",
+      "fg": "ink",
+      "bg": "body",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:85@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.ink"
+      ],
+      "bgOver": {
+        "fg": "ink",
+        "bg": "body",
+        "alpha": 56
+      }
+    },
+    {
+      "name": "progress label (ink) on its track over body",
+      "fg": "ink",
+      "bg": "body",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:86@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.ink"
+      ]
+    },
+    {
+      "name": "progress label (ink) on its fill over panel",
+      "fg": "ink",
+      "bg": "panel",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:85@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.ink"
+      ],
+      "bgOver": {
+        "fg": "ink",
+        "bg": "panel",
+        "alpha": 56
+      }
+    },
+    {
+      "name": "progress label (ink) on its track over panel",
+      "fg": "ink",
+      "bg": "panel",
+      "min": 4.5,
+      "darkOnly": false,
+      "_source": "android:app/src/test/java/com/mido/phonebridge/ContrastTest.kt:86@ce38676ecf55b033a050a24b2236ad5633908df6",
+      "_expect": [
+        "it.ink"
+      ]
+    }
+  ]
+}

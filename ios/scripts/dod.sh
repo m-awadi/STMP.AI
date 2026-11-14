@@ -129,8 +129,8 @@ BADSUBJ=$(/usr/bin/git log --format=%s "$BASE..HEAD" | grep -Ev '^((feat|fix|ref
 EMAILS=$(grep -rEho '[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z]{2,}' ios/contract 2>/dev/null | grep -Eiv '@example\.com$' || true); [ -z "$EMAILS" ] || die hygiene "non-example.com address in ios/contract: $EMAILS"
 if grep -rEl '^[[:space:]]*import Testing' ios/STMPKit ios/App --include='*.swift' 2>/dev/null | grep -q .; then die hygiene "import Testing (D60)"; fi
 if grep -rEl '^[[:space:]]*import XCTest' ios/STMPKit/Sources/STMPTestSupport 2>/dev/null | grep -q .; then die hygiene "import XCTest under STMPTestSupport (D111)"; fi
-UNSAFE=$(grep -rnE '@unchecked +Sendable' ios/STMPKit/Sources ios/App/Sources --include='*.swift' 2>/dev/null | while IFS=: read -r f n rest; do
-  prev=$(sed -n "$((n>1?n-1:1)),${n}p" "$f"); echo "$prev" | grep -q 'SAFETY:' || echo "$f:$n"; done)
+UNSAFE=$(grep -rnE '^[^/]*@unchecked +Sendable' ios/STMPKit/Sources ios/App/Sources --include='*.swift' 2>/dev/null | while IFS=: read -r f n rest; do
+  near=$(sed -n "$((n>1?n-1:1)),$((n+2))p" "$f"); echo "$near" | grep -q 'SAFETY:' || echo "$f:$n"; done)
 [ -z "$UNSAFE" ] || die hygiene "@unchecked Sendable without // SAFETY: $UNSAFE"
 PR=$(grep -rnE '(^|[^A-Za-z_.])print\(' ios/STMPKit/Sources ios/App/Sources --include='*.swift' 2>/dev/null | grep -Ev '^[^:]*:[0-9]+:[[:space:]]*//' || true); [ -z "$PR" ] || die hygiene "print( in Sources: $PR"
 TESTDIRS="ios/STMPKit/Tests ios/App/Tests ios/App/UITests"

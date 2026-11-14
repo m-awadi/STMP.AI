@@ -8,4 +8,5 @@ enum AXID {
   nonisolated static let tabHome = "tab.home"
   nonisolated static let tabPlugins = "tab.plugins"
   nonisolated static let tabSettings = "tab.settings"
+  nonisolated static let launchError = "launch.error"
 }
