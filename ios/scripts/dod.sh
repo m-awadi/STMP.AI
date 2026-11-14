@@ -139,9 +139,14 @@ LONGWAIT=$(grep -rnE 'timeout: *([3-9][1-9]|[4-9][0-9]|[0-9]{3,})' $TESTDIRS --i
 SNAP=$(grep -rnE '(^|[^A-Za-z_])assertSnapshot\(' ios/App/Tests ios/STMPKit/Tests --include='*.swift' 2>/dev/null | grep -v 'ios/App/Tests/Support/' || true); [ -z "$SNAP" ] || die hygiene "assertSnapshot( outside the helper: $SNAP"
 XCF=$(grep -rnE 'XCTExpectFailure' $TESTDIRS --include='*.swift' 2>/dev/null | grep -Ev 'BLOCKED P[0-9]+' || true); [ -z "$XCF" ] || die hygiene "XCTExpectFailure without BLOCKED P<n>: $XCF"
 VT=$(grep -rnE '(^|[^A-Za-z_])Date\(\)|Date\.now|style: *\.(relative|timer)' ios/App/Sources/Features ios/App/Sources/DesignSystem --include='*.swift' 2>/dev/null || true); [ -z "$VT" ] || die hygiene "wall-clock time in views (D70): $VT"
-ISO=$(while read -r seam; do case "$seam" in \#*|"") continue;; esac
-  grep -rnE "^[^/]*(class|struct|enum|actor) +[A-Za-z0-9_]+ *:[^{]*\b$seam\b" ios/App/Sources/Platform --include='*.swift' 2>/dev/null | grep -Ev 'nonisolated|actor +[A-Za-z0-9_]+ *:' || true
-done < "$HERE/seams.txt"); [ -z "$ISO" ] || die hygiene "Platform adapter must be nonisolated or an actor (D54): $ISO"
+isolation_violations() { # D54: a Platform type conforming to a seam must be nonisolated or an actor
+  local seam
+  while read -r seam; do
+    if [ -z "$seam" ] || [ "${seam#\#}" != "$seam" ]; then continue; fi
+    grep -rnE "^[^/]*(class|struct|enum|actor) +[A-Za-z0-9_]+ *:[^{]*\b$seam\b" ios/App/Sources/Platform --include='*.swift' 2>/dev/null | grep -Ev 'nonisolated|actor +[A-Za-z0-9_]+ *:' || true
+  done < "$HERE/seams.txt"
+}
+ISO=$(isolation_violations); [ -z "$ISO" ] || die hygiene "Platform adapter must be nonisolated or an actor (D54): $ISO"
 "$HERE/symbols-check.sh" || die symbols
 "$HERE/source-check.sh" || die source-check
 "$HERE/contract-drift.sh" | grep -E 'DRIFT' | sed 's/^/    warn: /' || true
