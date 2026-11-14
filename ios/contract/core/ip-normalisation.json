@@ -1,0 +1,24 @@
+{
+  "_source": "ios:D119",
+  "vectors": [
+    { "input": "100.101.102.103", "expected": "100.101.102.103", "_source": "ios:D119" },
+    { "input": "127.0.0.1", "expected": "127.0.0.1", "_source": "android:app/src/main/java/com/mido/phonebridge/callers/CallerRegistry.kt:50@ce38676ecf55b033a050a24b2236ad5633908df6", "_expect": ["127.0.0.1", "::1"] },
+    { "input": "::1", "expected": "::1", "_source": "android:app/src/main/java/com/mido/phonebridge/callers/CallerRegistry.kt:50@ce38676ecf55b033a050a24b2236ad5633908df6", "_expect": ["127.0.0.1", "::1"] },
+    { "input": "::ffff:100.101.102.103", "expected": "100.101.102.103", "_source": "ios:D119" },
+    { "input": "::FFFF:100.101.102.103", "expected": "100.101.102.103", "_source": "ios:D119" },
+    { "input": "::ffff:7f00:1", "expected": "127.0.0.1", "_source": "ios:D119" },
+    { "input": "fe80::1%en0", "expected": "fe80::1", "_source": "ios:D119" },
+    { "input": "FE80::ABCD%utun4", "expected": "fe80::abcd", "_source": "ios:D119" },
+    { "input": "2001:DB8::A", "expected": "2001:db8::a", "_source": "ios:D119" },
+    { "input": "2001:0db8:0000:0000:0000:0000:0000:0001", "expected": "2001:db8::1", "_source": "ios:D119" },
+    { "input": "2001:db8:0:0:1:0:0:1", "expected": "2001:db8::1:0:0:1", "_source": "ios:D119" },
+    { "input": "2001:db8:0:1:1:1:1:1", "expected": "2001:db8:0:1:1:1:1:1", "_source": "ios:D119" },
+    { "input": "0:0:0:0:0:0:0:0", "expected": "::", "_source": "ios:D119" },
+    { "input": "", "expected": null, "_source": "ios:D119" },
+    { "input": "not-an-ip", "expected": null, "_source": "ios:D119" },
+    { "input": "300.1.1.1", "expected": null, "_source": "ios:D119" },
+    { "input": "1.2.3", "expected": null, "_source": "ios:D119" },
+    { "input": "localhost", "expected": null, "_source": "ios:D119" },
+    { "input": "2001:db8::g", "expected": null, "_source": "ios:D119" }
+  ]
+}
