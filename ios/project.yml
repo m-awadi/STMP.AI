@@ -46,6 +46,7 @@ targets:
     settings:
       base:
         PRODUCT_NAME: STMP
+        TARGETED_DEVICE_FAMILY: "1"
         PRODUCT_BUNDLE_IDENTIFIER: com.mido.stmp
         # D6: the app target is MainActor by default; the package is nonisolated by default.
         SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor

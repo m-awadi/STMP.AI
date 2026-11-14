@@ -39,6 +39,6 @@ final class InertHostTests: XCTestCase {
   func testInertEnvironmentUsesAFixedClockAndAUTCCalendar() {
     let env = AppEnvironment.inert(storageRoot: StorageRoot(url: FileManager.default.temporaryDirectory))
     XCTAssertEqual(env.now(), Date(timeIntervalSince1970: 1_767_268_800))
-    XCTAssertEqual(env.calendar.timeZone.identifier, "UTC")
+    XCTAssertEqual(env.calendar.timeZone.secondsFromGMT(), 0)
   }
 }

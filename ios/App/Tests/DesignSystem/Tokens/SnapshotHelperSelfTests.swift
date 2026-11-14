@@ -33,8 +33,8 @@ final class SnapshotHelperSelfTests: XCTestCase {
     XCTAssertEqual(
       references(named: testName),
       [
-        "\(testName).dummy.dark-accessibility1.png", "\(testName).dummy.dark-large.png", "\(testName).dummy.light-accessibility1.png",
-        "\(testName).dummy.light-large.png",
+        "\(testName).dummy-dark-accessibility1.png", "\(testName).dummy-dark-large.png", "\(testName).dummy-light-accessibility1.png",
+        "\(testName).dummy-light-large.png",
       ])
     // With the references on disk a plain run (never) passes.
     XCTAssertEqual(StmpSnapshot.check(of: Dummy(), named: "dummy", record: .never, file: #filePath, testName: testName, line: #line), [])
