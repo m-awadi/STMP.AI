@@ -5,7 +5,7 @@ Current build: **v0.1.0 (build 1)**. This file has its own version line, separat
 ---
 
 ## 0.1.0 (build 1) — 2026-11-14 — CURRENT
-- The iOS client starts as a scaffold with frozen service seams, design tokens and a tab shell with placeholders.
+- The iOS app now has a starting project with a tab bar, the colours, type and spacing used across the app, and the checks that keep later work in step.
 
 ## Keeping this file honest
 
